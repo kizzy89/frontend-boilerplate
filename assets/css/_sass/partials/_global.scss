@@ -1,0 +1,46 @@
+body {
+	margin: 0;
+	font-size: 14px;
+	line-height: 20px;
+	color: #333333;
+	background-color: #ffffff;
+}
+
+html,
+button,
+input,
+select,
+textarea {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+dl {
+	dt {
+		float: left;
+		clear: both;
+		width: 50%;
+	}
+	dd {
+		float: right;
+		width: 50%;
+		margin: 0;
+		text-align: right;
+	}
+}
+
+.clearfix {
+	*zoom: 1;
+	&:before, &:after {
+		display: table;
+		content: "";
+		line-height: 0;
+	}
+	&:after {
+		clear: both;
+	}
+}
+	
+.hidden {
+	display: none;
+	visibility: hidden;
+}

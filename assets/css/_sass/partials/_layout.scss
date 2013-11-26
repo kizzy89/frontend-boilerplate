@@ -1,0 +1,50 @@
+// Layout Variables
+$sidebar: 275px;
+
+// Layout Styles
+.layout {
+	@include box-sizing(border-box); 
+	> aside {
+		@include box-sizing(border-box);
+	}
+	> section {
+		@include box-sizing(border-box);
+	}
+}
+
+// Generic Grid
+.grid {
+	@extend .clearfix;
+	.col {
+		@include box-sizing(border-box);
+		*behavior: url(/static/css/htc/boxsizing.htc);
+		float: left;
+		width: 50%;
+		padding: 0 5px;
+		&:first-child {
+			padding-left: 0;
+		}
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+	&.three .col {
+		width: 33.33%;
+	}
+	&.four .col {
+		width: 25%;
+	}
+	&.border .col {
+		margin-left: -1px;
+		border-left: 1px solid #e8e8e8;
+		border-right: 1px solid #e8e8e8;
+		padding: 0 15px;
+		&:first-child {
+			margin-left: 0;
+			border-left: 0;
+		}
+		&:last-child {
+			border-right: 0;
+		}
+	}
+}
