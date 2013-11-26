@@ -1,22 +1,19 @@
-input, textarea, select, button {
+input[type="text"],
+textarea,
+select,
+button {
 	@include border-radius(4px);
 	@include box-sizing(border-box);
+	@include box-shadow(inset 0 1px 1px rgba(0,0,0,0.075));
+	@include transition(border linear .2s,box-shadow linear .2s);
 	display: inline-block;
-	height: 30px;
 	padding: 4px 6px;
-	margin-bottom: 10px;
+	border: 1px solid #ccc;
 	font-size: 12px;
 	line-height: 20px;
 	color: #666;
-	vertical-align: middle;
-}
-
-textarea, input {
-	@include box-shadow(inset 0 1px 1px rgba(0,0,0,0.075));
-	@include transition(border linear .2s,box-shadow linear .2s);
-
 	background-color: #fff;
-	border: 1px solid #ccc;
+	vertical-align: middle;
 }
 
 textarea {
@@ -61,4 +58,98 @@ button {
 input[type="search"] {
 	padding: 0 25px 0 5px;
 	background: #fff image-url("icon/search.png") 98% 50% no-repeat;
+}
+
+form,
+.form {
+	div.validationSummary {
+		margin-bottom: 10px;
+		color: #BE3438;
+		ul {
+			@include layout-list;
+		}
+	}
+	div.item {
+		@extend .clearfix;
+		margin-bottom: 5px;
+		> label {
+			display: block;
+			font-weight: bold;
+			span {
+				font-weight: normal;
+			}
+		}
+		input {
+			vertical-align: baseline;
+		}
+		> ul {
+			@include layout-list;
+		}
+		&.horizontal {
+			> label {
+				display: inline-block;
+				margin-right: 5px;
+			}
+		}
+	}
+	div.group {
+		@extend .clearfix;
+		div.item {
+			@include box-sizing(border-box);
+			float: left;
+			padding: 0 10px 0 0;
+			&:last-child {
+				padding-right: 0;
+			}
+			input[type="text"], select, textarea {
+				width: 100%;
+			}
+			&.horizontal {
+				input[type="text"], select, textarea {
+					width: auto;
+				}
+			}
+		}
+	}
+	div.vertical {
+		div.item {
+			//padding-left: 250px;
+			label {
+				float: left;
+				width: 33%;
+			}
+			input, select {
+				max-width: 67%;
+			}
+		}
+		&.fixed {
+			div.item {
+				padding-left: 250px;
+				label {
+					float: left;
+					width: 250px;
+					margin-left: -250px;
+				}
+				input, select {
+					max-width: auto;
+				}
+			}
+		}
+	}
+	input[type="radio"] {
+		margin-bottom: 0;
+		margin-right: 5px;
+	}
+	.radio-list,
+	.checkbox-list {
+		input, label {
+			display: inline-block;
+		}
+		input {
+			margin-left: 20px;
+			&.parent-checkbox {
+				margin: 0;
+			}
+		}
+	}
 }
