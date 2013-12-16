@@ -1,19 +1,38 @@
 input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+input[type="color"],
 textarea,
-select,
-button {
+select {
 	@include border-radius(4px);
-	@include box-sizing(border-box);
 	@include box-shadow(inset 0 1px 1px rgba(0,0,0,0.075));
-	@include transition(border linear .2s,box-shadow linear .2s);
+	@include transition(border linear .2s, box-shadow linear .2s);
 	display: inline-block;
-	padding: 4px 6px;
+	width: 250px;
+	padding: 5px;
 	border: 1px solid #ccc;
-	font-size: 12px;
-	line-height: 20px;
-	color: #666;
 	background-color: #fff;
 	vertical-align: middle;
+	&:focus {
+		border-color: #66afe9;
+		@include box-shadow(0 0 8px rgba(102, 175, 233, .75));
+		outline: none;
+	}
+}
+
+input[type="search"] {
+	padding: 0 25px 0 5px;
+	background: #fff image-url("icon/search.png") 98% 50% no-repeat;
 }
 
 textarea {
@@ -22,42 +41,58 @@ textarea {
 }
 
 select {
-	padding: 0 7px;
-	height: 25px;
-	background-color: white;
-	@include border-radius(3px);
+	position: relative;
+	padding-right: 25px;
+	//background-color: white;
+	&:before {
+		// Doesn't work?
+		content: "";
+		position: absolute;
+		top: 50%;
+		right: 10px;
+		border-top: 10px solid #ccc;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+	}
+}
+
+select {
+	// Mozilla
+	-moz-appearance: none;
+	text-indent: 0.01px;
+    text-overflow: '';
+
+	// Webkit
+	-webkit-appearance: none;
+}
+// IE
+select::-ms-expand {
+	display: none;
+}
+.lt-ie10 select {
+	padding: 0 0 0 5px;
+	background: white;
 }
 
 button {
-	@include border-radius(3px);
+	@include border-radius(4px);
 	height: auto;
-	padding: 0 25px;
-	border: 1px solid #333;
-	background-color: #333;
+	width: auto;
+	padding: 5px 25px;
+	border: 1px solid #0085B2;
+	background-color: #00A3D9;
 	color: #fff;
 	text-align: center;
-
-	&:disabled {
-		background-color: #335a73;
-		color: #718c9d;
-	}
 
 	&.secondary {
 		border: 1px solid #ccc;
 		background-color: #f8f8f8;
 		color: #333;
 	}
-	&.mid {
-		padding: 3px 25px;
-	}
-	&.uppercase {
-		text-transform: uppercase;
-	}
-}
 
-input[type="search"] {
-	padding: 0 25px 0 5px;
-	background: #fff image-url("icon/search.png") 98% 50% no-repeat;
+	&:disabled {
+		opacity: .5;
+	}
 }
 
 form,
@@ -101,11 +136,41 @@ form,
 			&:last-child {
 				padding-right: 0;
 			}
-			input[type="text"], select, textarea {
+			input[type="text"],
+			input[type="password"],
+			input[type="search"],
+			input[type="number"],
+			input[type="datetime"],
+			input[type="datetime-local"],
+			input[type="date"],
+			input[type="month"],
+			input[type="time"],
+			input[type="week"],
+			input[type="email"],
+			input[type="url"],
+			input[type="tel"],
+			input[type="color"],
+			textarea,
+			select {
 				width: 100%;
 			}
 			&.horizontal {
-				input[type="text"], select, textarea {
+				input[type="text"],
+				input[type="password"],
+				input[type="search"],
+				input[type="number"],
+				input[type="datetime"],
+				input[type="datetime-local"],
+				input[type="date"],
+				input[type="month"],
+				input[type="time"],
+				input[type="week"],
+				input[type="email"],
+				input[type="url"],
+				input[type="tel"],
+				input[type="color"],
+				textarea,
+				select {
 					width: auto;
 				}
 			}
@@ -114,29 +179,64 @@ form,
 	div.vertical {
 		div.item {
 			//padding-left: 250px;
-			label {
+			> label {
 				float: left;
 				width: 33%;
 			}
-			input, select {
+			input[type="text"],
+			input[type="password"],
+			input[type="search"],
+			input[type="number"],
+			input[type="datetime"],
+			input[type="datetime-local"],
+			input[type="date"],
+			input[type="month"],
+			input[type="time"],
+			input[type="week"],
+			input[type="email"],
+			input[type="url"],
+			input[type="tel"],
+			input[type="color"],
+			textarea,
+			select {
 				max-width: 67%;
+			}
+			.radio-list,
+			.checkbox-list {
+				float: left;
 			}
 		}
 		&.fixed {
 			div.item {
 				padding-left: 250px;
-				label {
+				> label {
 					float: left;
 					width: 250px;
 					margin-left: -250px;
 				}
-				input, select {
+				input[type="text"],
+				input[type="password"],
+				input[type="search"],
+				input[type="number"],
+				input[type="datetime"],
+				input[type="datetime-local"],
+				input[type="date"],
+				input[type="month"],
+				input[type="time"],
+				input[type="week"],
+				input[type="email"],
+				input[type="url"],
+				input[type="tel"],
+				input[type="color"],
+				textarea,
+				select {
 					max-width: auto;
 				}
 			}
 		}
 	}
-	input[type="radio"] {
+	input[type="radio"],
+	input[type="checkbox"] {
 		margin-bottom: 0;
 		margin-right: 5px;
 	}
@@ -145,10 +245,10 @@ form,
 		input, label {
 			display: inline-block;
 		}
-		input {
-			margin-left: 20px;
-			&.parent-checkbox {
-				margin: 0;
+		&.inline {
+			li {
+				display: inline-block;
+				margin-right: 10px;
 			}
 		}
 	}

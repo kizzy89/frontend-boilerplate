@@ -1,7 +1,9 @@
 .site-header {
 
 	nav {
-		
+		ul {
+			@include inline-block-list();
+		}
 	}	
 
 }

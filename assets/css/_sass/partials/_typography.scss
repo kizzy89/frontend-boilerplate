@@ -33,21 +33,32 @@
 	font-style: normal;
 }
 
-h1, h2, h3 {
-	font-family: "Avenir-Heavy";
-	font-weight: normal;
-	line-height: none;
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 500;
+	margin: 10px 0;
 }
 h1 {
-	color: #0077BE;
-	font-size: 23px;
+	font-size: 36px;
 }
 h2 {
-	color: #333;
-	font-size: 20px;
+	font-size: 30px;
 }
 h3 {
-	color: #fff;
-	font-family: "Avenir-Medium";
-	font-size: 16px;
+	font-size: 24px;
+}
+h4 {
+	font-size: 18px;
+}
+h5 {
+	font-size: 14px;
+}
+h6 {
+	font-size: 12px;
+}
+
+ul, ol {
+	ul, ol {
+		margin: 0;
+	}
 }

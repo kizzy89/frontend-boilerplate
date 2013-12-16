@@ -1,7 +1,11 @@
+* {
+	@include box-sizing(border-box); 
+}
+
 body {
 	margin: 0;
 	font-size: 14px;
-	line-height: 20px;
+	line-height: 1.5;
 	color: #333333;
 	background-color: #ffffff;
 }
