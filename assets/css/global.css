@@ -698,7 +698,7 @@ textarea {
 select {
   position: relative;
   padding-right: 30px;
-  background: white url('../i/icon/select-arrow.png?1399047529') no-repeat 100% 50%;
+  background: white url('../i/icon/select-arrow.png?1399574369') no-repeat 100% 50%;
   -moz-appearance: none;
   text-indent: 0.01px;
   text-overflow: '';
@@ -975,27 +975,15 @@ form .checkbox-list.inline li,
   margin-right: 10px;
 }
 
-/* line 65, _sass/partials/_sprites.scss */
-.icon-search {
-  background-image: url('../i/icon-s1291f9d75c.png');
-  background-position: 0 0;
-  height: 16px;
-  width: 16px;
-}
-/* line 68, _sass/partials/_sprites.scss */
-.icon-search.text {
-  padding-left: 21px;
-}
-
-/* line 65, _sass/partials/_sprites.scss */
+/* line 75, _sass/partials/_sprites.scss */
 .icon-select-arrow {
-  background-image: url('../i/icon-s1291f9d75c.png');
-  background-position: 0 -20px;
+  background-image: url('../i/icon-s732a3647d1.png');
+  background-position: 0 0;
   height: 6px;
   width: 25px;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min--moz-device-pixel-ratio: 2), (min-device-pixel-ratio: 2), (min-resolution: 144dppx) {
-  /* line 65, _sass/partials/_sprites.scss */
+  /* line 75, _sass/partials/_sprites.scss */
   .icon-select-arrow {
     background-image: url('../i/icon2x-s9c99ea9361.png');
     background-size: 25px 6px;
@@ -1004,19 +992,19 @@ form .checkbox-list.inline li,
     width: 25px;
   }
 }
-/* line 68, _sass/partials/_sprites.scss */
+/* line 78, _sass/partials/_sprites.scss */
 .icon-select-arrow.text {
   padding-left: 30px;
 }
 
-/* line 86, _sass/partials/_sprites.scss */
+/* line 97, _sass/partials/_sprites.scss */
 [class*="icon-"] {
   display: inline-block;
   vertical-align: middle;
   text-indent: -5000px;
   background-repeat: no-repeat;
 }
-/* line 91, _sass/partials/_sprites.scss */
+/* line 102, _sass/partials/_sprites.scss */
 [class*="icon-"].text {
   width: auto;
   height: auto;

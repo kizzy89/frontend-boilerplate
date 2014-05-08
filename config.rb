@@ -23,9 +23,44 @@ module Sass::Script::Functions
   # declare :str_index, [:string, :substring]
   
   # Custom list_files function for use in Sass
-  def list_files(path)
-    return Sass::Script::List.new(
-      Dir.glob(path.value).map! { |x| Sass::Script::String.new(x) },
+  def list_files(pattern)
+    
+    dir_path = pattern.value
+    
+    if dir_path.start_with?("/")
+      dir_path = dir_path.sub("/", "")
+    end
+
+    if File.directory?(dir_path)
+      path = dir_path
+    else
+      path = File.join(Compass.configuration.project_path, dir_path)
+    end
+
+    Sass::Script::List.new(
+      Dir.glob(path).map! { |x| Sass::Script::String.new(x) },
+      :comma
+    )
+  end
+
+  def list_images(pattern)
+    
+    dir_path = pattern.value
+    
+    if dir_path.start_with?("/")
+      dir_path = dir_path.sub("/", "")
+    end
+
+    if File.directory?(dir_path)
+      path = dir_path
+    elsif Compass.configuration.images_path
+      path = File.join(Compass.configuration.images_path, dir_path)
+    else
+      path = File.join(Compass.configuration.project_path, dir_path)
+    end
+
+    Sass::Script::List.new(
+      Dir.glob(path).map! { |x| Sass::Script::String.new(x) },
       :comma
     )
   end

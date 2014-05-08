@@ -3,29 +3,13 @@ $iconFolder: "icon";
 $icon2xFolder: "icon2x";
 
 //-----------------------------------
-// Background
+// Sprite Mixins
 //-----------------------------------
 @mixin sprite-background-image($map, $sprite, $dimensions: false, $offset-x: 0, $offset-y: 0) {
 	@include sprite($map, $sprite, $dimensions, $offset-x, $offset-y);
 	background-image: $map;
 	background-repeat: no-repeat;
 }
-
-//-----------------------------------
-// Icons
-//-----------------------------------
-$icon-sprite: sprite-map("#{$iconFolder}/*.png",
-	$spacing: 4px
-	//$new-position: 100%, $new-spacing: 15px, $new-repeat: no-repeat
-);
-$icon-2x-sprite: sprite-map("#{$icon2xFolder}/*.png",
-	$spacing: 4px
-	//$new-position: 100%, $new-spacing: 15px, $new-repeat: no-repeat
-);
-
-$icons: sprite_names($icon-sprite); // Get a list of all the images used in the sprite
-$icons-2x: sprite_names($icon-2x-sprite); // Get a list of all the images used in the sprite
-$all-icons: remove-duplicates(join($icons, $icons-2x)); // Get a merged, unique list of all icons used, both 1x and 2x
 
 // Retina tips taken from https://github.com/Gaya/Retina-Sprites-for-Compass
 @mixin icon($sprite, $dimensions: true, $hover: false) {
@@ -59,6 +43,32 @@ $all-icons: remove-duplicates(join($icons, $icons-2x)); // Get a merged, unique 
 
 }
 
+//-----------------------------------
+// Icons
+//-----------------------------------
+
+$icon-sprite: ();
+$icon-2x-sprite: ();
+$icons: ();
+$icons-2x: ();
+
+@if length(list_images("#{$iconFolder}/*.png")) > 0 { 
+	$icon-sprite: sprite-map("#{$iconFolder}/*.png",
+		$spacing: 4px
+		//$new-position: 100%, $new-spacing: 15px, $new-repeat: no-repeat
+	) !global;
+	$icons: sprite_names($icon-sprite) !global; // Get a list of all the images used in the sprite
+}
+@if length(list_images("#{$icon2xFolder}/*.png")) > 0 { 
+	$icon-2x-sprite: sprite-map("#{$icon2xFolder}/*.png",
+		$spacing: 4px
+		//$new-position: 100%, $new-spacing: 15px, $new-repeat: no-repeat
+	) !global;
+	$icons-2x: sprite_names($icon-2x-sprite) !global; // Get a list of all the images used in the sprite
+}
+
+$all-icons: remove-duplicates(join($icons, $icons-2x)); // Get a merged, unique list of all icons used, both 1x and 2x
+
 // Create an .icon-{iconName} class for each icon. Careful what is added here, as lines will be replicated for every single icon.
 @each $icon in $all-icons {
 	@if str-index($icon, "_hover") == null {
@@ -82,6 +92,7 @@ $all-icons: remove-duplicates(join($icons, $icons-2x)); // Get a merged, unique 
 		}
 	}
 }
+
 
 [class*="icon-"] {
 	display: inline-block;
