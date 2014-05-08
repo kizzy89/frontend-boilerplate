@@ -1,17 +1,24 @@
-input[type="text"],
-input[type="password"],
-input[type="search"],
-input[type="number"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="email"],
-input[type="url"],
-input[type="tel"],
-input[type="color"],
+$inputs-list: 'input[type="text"]',
+			  'input[type="password"]',
+			  'input[type="search"]',
+			  'input[type="number"]',
+			  'input[type="datetime"]',
+			  'input[type="datetime-local"]',
+			  'input[type="date"]',
+			  'input[type="month"]',
+			  'input[type="time"]',
+			  'input[type="week"]',
+			  'input[type="email"]',
+			  'input[type="url"]',
+			  'input[type="tel"]',
+			  'input[type="color"]';
+$input-selectors: ();
+
+@each $item in $inputs-list {
+	$input-selectors: join($input-selectors, unquote($item), comma) !global;
+}
+
+#{$input-selectors},
 textarea,
 select {
 	@include border-radius(4px);
@@ -19,6 +26,9 @@ select {
 	@include transition(border linear .2s, box-shadow linear .2s);
 	display: inline-block;
 	width: 250px;
+	@include breakpoint(small) {
+		width: 100%;
+	}
 	padding: 5px;
 	border: 1px solid #ccc;
 	background-color: #fff;
@@ -32,7 +42,7 @@ select {
 
 input[type="search"] {
 	padding: 0 25px 0 5px;
-	background: #fff image-url("icon/search.png") 98% 50% no-repeat;
+	//background: #fff image-url("icon/search.png") 98% 50% no-repeat;
 }
 
 textarea {
@@ -42,21 +52,8 @@ textarea {
 
 select {
 	position: relative;
-	padding-right: 25px;
-	//background-color: white;
-	&:before {
-		// Doesn't work?
-		content: "";
-		position: absolute;
-		top: 50%;
-		right: 10px;
-		border-top: 10px solid #ccc;
-		border-left: 10px solid transparent;
-		border-right: 10px solid transparent;
-	}
-}
-
-select {
+	padding-right: 30px;
+	background: #fff image-url("icon/select-arrow.png") no-repeat 100% 50%;
 	// Mozilla
 	-moz-appearance: none;
 	text-indent: 0.01px;
@@ -74,7 +71,8 @@ select::-ms-expand {
 	background: white;
 }
 
-button {
+button,
+a.button {
 	@include border-radius(4px);
 	height: auto;
 	width: auto;
@@ -129,49 +127,25 @@ form,
 	}
 	div.group {
 		@extend .clearfix;
-		div.item {
-			@include box-sizing(border-box);
-			float: left;
-			padding: 0 10px 0 0;
-			&:last-child {
-				padding-right: 0;
-			}
-			input[type="text"],
-			input[type="password"],
-			input[type="search"],
-			input[type="number"],
-			input[type="datetime"],
-			input[type="datetime-local"],
-			input[type="date"],
-			input[type="month"],
-			input[type="time"],
-			input[type="week"],
-			input[type="email"],
-			input[type="url"],
-			input[type="tel"],
-			input[type="color"],
-			textarea,
-			select {
-				width: 100%;
-			}
-			&.horizontal {
-				input[type="text"],
-				input[type="password"],
-				input[type="search"],
-				input[type="number"],
-				input[type="datetime"],
-				input[type="datetime-local"],
-				input[type="date"],
-				input[type="month"],
-				input[type="time"],
-				input[type="week"],
-				input[type="email"],
-				input[type="url"],
-				input[type="tel"],
-				input[type="color"],
+		@include breakpoint(medium-large) {
+			div.item {
+				@include box-sizing(border-box);
+				float: left;
+				padding: 0 10px 0 0;
+				&:last-child {
+					padding-right: 0;
+				}
+				#{$input-selectors},
 				textarea,
 				select {
-					width: auto;
+					width: 100%;
+				}
+				&.horizontal {
+					#{$input-selectors},
+					textarea,
+					select {
+						width: auto;
+					}
 				}
 			}
 		}
@@ -183,20 +157,7 @@ form,
 				float: left;
 				width: 33%;
 			}
-			input[type="text"],
-			input[type="password"],
-			input[type="search"],
-			input[type="number"],
-			input[type="datetime"],
-			input[type="datetime-local"],
-			input[type="date"],
-			input[type="month"],
-			input[type="time"],
-			input[type="week"],
-			input[type="email"],
-			input[type="url"],
-			input[type="tel"],
-			input[type="color"],
+			#{$input-selectors},
 			textarea,
 			select {
 				max-width: 67%;
@@ -214,24 +175,26 @@ form,
 					width: 250px;
 					margin-left: -250px;
 				}
-				input[type="text"],
-				input[type="password"],
-				input[type="search"],
-				input[type="number"],
-				input[type="datetime"],
-				input[type="datetime-local"],
-				input[type="date"],
-				input[type="month"],
-				input[type="time"],
-				input[type="week"],
-				input[type="email"],
-				input[type="url"],
-				input[type="tel"],
-				input[type="color"],
+				#{$input-selectors},
 				textarea,
 				select {
 					max-width: auto;
 				}
+			}
+		}
+	}
+	div.buttons {
+		@extend .clearfix;
+		button,
+		.button {
+			float: right;
+			margin: 10px 0 0 5px;
+			@include breakpoint(small) {
+				float: none;
+				width: 100%;
+			}
+			&:first-child {
+				margin-left: 0;
 			}
 		}
 	}

@@ -1,7 +1,10 @@
-# Ignore Sass cache
+#################
+## Frontend
+#################
 *.sass-cache
+node_modules
 
-# Ignore IDE project files
+# IDEs
 *.tmproj
 *.esproj
 *.sublime-project
