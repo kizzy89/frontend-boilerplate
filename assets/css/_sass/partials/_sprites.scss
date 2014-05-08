@@ -93,7 +93,6 @@ $all-icons: remove-duplicates(join($icons, $icons-2x)); // Get a merged, unique 
 	}
 }
 
-
 [class*="icon-"] {
 	display: inline-block;
 	vertical-align: middle;

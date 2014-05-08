@@ -997,14 +997,14 @@ form .checkbox-list.inline li,
   padding-left: 30px;
 }
 
-/* line 97, _sass/partials/_sprites.scss */
+/* line 96, _sass/partials/_sprites.scss */
 [class*="icon-"] {
   display: inline-block;
   vertical-align: middle;
   text-indent: -5000px;
   background-repeat: no-repeat;
 }
-/* line 102, _sass/partials/_sprites.scss */
+/* line 101, _sass/partials/_sprites.scss */
 [class*="icon-"].text {
   width: auto;
   height: auto;
