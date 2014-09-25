@@ -1,4 +1,4 @@
-# Stream Energy
+# Frontend Boilerplate
 
 ## Requirements
 - [Ruby] (https://www.ruby-lang.org/) – Used for RubyGems
